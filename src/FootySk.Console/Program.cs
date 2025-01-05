@@ -4,7 +4,12 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using FootySk.Core;
+using FootySk.Database;
 using System.Text.Json;
+
+Player[] players = await new PlayerCsvParser("src/FootySk.Database/all_players.csv").Parse();
+Console.WriteLine($"Using database with {players.Length} players");
+
 
 // Create a kernel with Azure OpenAI chat completion
 var builder = Kernel.CreateBuilder().AddAzureOpenAIChatCompletionWithCredentials("credentials.json");

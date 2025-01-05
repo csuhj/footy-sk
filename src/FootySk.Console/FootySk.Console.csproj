@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FootySk.Core\FootySk.Core.csproj" />
+    <ProjectReference Include="..\FootySk.Database\FootySk.Database.csproj" />
   </ItemGroup>
 
 </Project>
