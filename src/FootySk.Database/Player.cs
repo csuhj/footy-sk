@@ -48,12 +48,12 @@ public class Player
     public string PreferredFoot;
     public int HeightInCm;
     public int WeightInKg;
-    public string AlternativePositions;
+    public string[] AlternativePositions;
     public int Age;
     public string Nation;
     public string League;
     public string Team;
-    public string PlayStyle;
+    public string[] PlayStyle;
     public string Url;
     public int GKDiving;
     public int GKHandling;

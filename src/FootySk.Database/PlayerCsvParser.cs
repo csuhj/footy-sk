@@ -25,6 +25,8 @@ public class PlayerCsvParser
                 return ParseWeightInKg;
             else if (f.FieldType == typeof(int))
                 return ParseInt;
+            else if (f.FieldType == typeof(string[]))
+                return ParseStringArray;
             else
                 return ParseStringRemovingQuotes;
         }).ToArray();
@@ -97,5 +99,11 @@ public class PlayerCsvParser
 
         s = s.Replace("\"\"","\"");
         return s;
+    }
+
+    private static string[] ParseStringArray(string s)
+    {
+        s = ParseStringRemovingQuotes(s);
+        return csvParseRegex.Split(s).Where(s => !string.IsNullOrEmpty(s)).ToArray();
     }
 }
