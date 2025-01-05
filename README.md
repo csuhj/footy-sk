@@ -1,5 +1,5 @@
 # footy-sk
-A Semantic Kernel project with football data
+A [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) project with football data
 
 ### Initial Setup
 
