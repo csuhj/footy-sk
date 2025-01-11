@@ -1,6 +1,6 @@
 ﻿namespace FootySk.Database;
 
-public class Player
+public class PlayerRecord
 {
     public int Id;
     public int GenderRank;

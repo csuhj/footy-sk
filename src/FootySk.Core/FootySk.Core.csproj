@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.32.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FootySk.Database\FootySk.Database.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -4,8 +4,11 @@ using System.Text.Json.Serialization;
 
 public class Credentials
 {
-    [JsonPropertyName("deploymentName")]
-    public string? DeploymentName { get; set; }
+    [JsonPropertyName("chatDeploymentName")]
+    public string? ChatDeploymentName { get; set; }
+
+    [JsonPropertyName("embeddingDeploymentName")]
+    public string? EmbeddingDeploymentName { get; set; }
 
     [JsonPropertyName("endpoint")]
     public string? Endpoint { get; set; }

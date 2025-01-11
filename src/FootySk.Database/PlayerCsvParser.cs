@@ -16,12 +16,12 @@ public class PlayerCsvParser
     public PlayerCsvParser(string filename)
     {
         this.filename = filename;
-        fields = typeof(Player).GetFields();
+        fields = typeof(PlayerRecord).GetFields();
 
         conversions = fields.Select<FieldInfo, Func<string, object>>(f => {
-            if (f.Name == nameof(Player.HeightInCm))
+            if (f.Name == nameof(PlayerRecord.HeightInCm))
                 return ParseHeightInCm;
-            else if (f.Name == nameof(Player.WeightInKg))
+            else if (f.Name == nameof(PlayerRecord.WeightInKg))
                 return ParseWeightInKg;
             else if (f.FieldType == typeof(int))
                 return ParseInt;
@@ -32,11 +32,11 @@ public class PlayerCsvParser
         }).ToArray();
     }
 
-    public async Task<Player[]> Parse()
+    public async Task<PlayerRecord[]> Parse()
     {
         using (var reader = new StreamReader(filename))
         {
-            List<Player> players = new List<Player>();
+            List<PlayerRecord> players = new List<PlayerRecord>();
             await reader.ReadLineAsync();
             string? line;
             while ((line = await reader.ReadLineAsync()) != null)
@@ -48,10 +48,10 @@ public class PlayerCsvParser
         }
     }
 
-    private Player Parse(string line)
+    private PlayerRecord Parse(string line)
     {
         string[] data = csvParseRegex.Split(line);
-        Player player = new Player();
+        PlayerRecord player = new PlayerRecord();
 
         for(int i=0; i<data.Length; i++)
         {
