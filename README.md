@@ -9,7 +9,7 @@ In order to set up the Azure resources needed to run the project, set up and dep
 * Go to the Azure AI Foundary, linked to from the portal
 * Deploy your chosen model for chat completions (for example `gpt-4o-mini`) and text embeddings (for example `text-embedding-ada-002`)
 
-You will also need to use the `vec0` SQlite extension.  To do this:
+You will also need to use the `vec0` SQlite extension to support Vector Stores held in Sqlite.  To do this:
 * Go to https://github.com/asg017/sqlite-vec/releases (for appropriate architecture) and copy the vec0 DLL/dylib into the FootySk.Console project's executable dir
 * On MacOS, this will fail first time with a message about not being trusted by Apple.  Go to System Settings -> Privacy & Security, scroll to bottom and allow vec0.dylib anyway.  This should then work again.  See https://support.apple.com/en-gb/guide/mac-help/mh40616/mac
 
