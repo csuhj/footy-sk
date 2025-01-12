@@ -1,7 +1,8 @@
 using Microsoft.Extensions.VectorData;
-using FootySk.Database;
+using FootySk.Database.Player;
+using FootySk.Database.AttributeDetails;
 using Microsoft.SemanticKernel.Embeddings;
-using Microsoft.SemanticKernel.ChatCompletion;
+using FootySk.Database.PositionDetails;
 
 namespace FootySk.Core;
 
@@ -40,10 +41,10 @@ public class VectorStoreHelper
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
         // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
-        var collection = vectorStore.GetCollection<ulong, AttributeDetails>("attribute_data");
+        var collection = vectorStore.GetCollection<ulong, AttributeDetails>("attribute_details");
 
         if (await collection.CollectionExistsAsync()) {
-            Console.WriteLine("Attribute Data collection already exists so not repopulating");
+            Console.WriteLine("Attribute Details collection already exists so not repopulating");
             return;
         }
 
@@ -51,7 +52,7 @@ public class VectorStoreHelper
         await collection.CreateCollectionIfNotExistsAsync();
 
         AttributeDetailsRecord[] attributeDetails = AttributeDetailsDataParser.GetAttributeDetails(Path.Combine(rootPath, "src/FootySk.Database/attribute_details_data.json"));
-        Console.WriteLine($"Populating attribute data collection from database with {attributeDetails.Length} players");
+        Console.WriteLine($"Populating attribute details collection from database with {attributeDetails.Length} items");
 
         //See https://github.com/MicrosoftDocs/semantic-kernel-docs/blob/main/semantic-kernel/concepts/vector-store-connectors/vector-search.md
         //    https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/vector-search?pivots=programming-language-csharp
@@ -60,6 +61,34 @@ public class VectorStoreHelper
         {
             // Create a record and generate a vector for the description using your chosen embedding generation implementation.
             await collection.UpsertAsync(await AttributeDetails.Create(attributeDetail, textEmbeddingService));
+        }
+    }
+
+#pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+    public static async Task PopulatePositionDataVectorStore(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingService, string rootPath) {
+#pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+
+        // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
+        var collection = vectorStore.GetCollection<ulong, PositionDetails>("position_details");
+
+        if (await collection.CollectionExistsAsync()) {
+            Console.WriteLine("Position Details collection already exists so not repopulating");
+            return;
+        }
+
+        // Create the collection if it doesn't exist yet.
+        await collection.CreateCollectionIfNotExistsAsync();
+
+        PositionDetailsRecord[] positionDetails = PositionDetailsDataParser.GetPositionDetails(Path.Combine(rootPath, "src/FootySk.Database/position_details_data.json"));
+        Console.WriteLine($"Populating position details collection from database with {positionDetails.Length} items");
+
+        //See https://github.com/MicrosoftDocs/semantic-kernel-docs/blob/main/semantic-kernel/concepts/vector-store-connectors/vector-search.md
+        //    https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/vector-search?pivots=programming-language-csharp
+        //For now just update the first 10 players
+        foreach (var positionDetail in positionDetails)
+        {
+            // Create a record and generate a vector for the description using your chosen embedding generation implementation.
+            await collection.UpsertAsync(await PositionDetails.Create(positionDetail, textEmbeddingService));
         }
     }
 }

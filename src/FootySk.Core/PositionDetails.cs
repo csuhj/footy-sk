@@ -1,10 +1,10 @@
 using Microsoft.Extensions.VectorData;
-using FootySk.Database.AttributeDetails;
+using FootySk.Database.PositionDetails;
 using Microsoft.SemanticKernel.Embeddings;
 
 namespace FootySk.Core;
 
-public class AttributeDetails
+public class PositionDetails
 {
     [VectorStoreRecordKey]
     public ulong Id {get; set;}
@@ -13,10 +13,7 @@ public class AttributeDetails
     public string Title { get; set; }
 
    [VectorStoreRecordData(IsFilterable = true)]
-    public string Category { get; set; }
-
-   [VectorStoreRecordData(IsFilterable = true)]
-    public string Weighting { get; set; }
+    public string Abbreviation { get; set; }
 
     [VectorStoreRecordData(IsFullTextSearchable = true)]
     public string Description { get; set; }
@@ -25,17 +22,16 @@ public class AttributeDetails
     public ReadOnlyMemory<float>? DescriptionEmbedding { get; set; }
 
 #pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-    public static async Task<AttributeDetails> Create(AttributeDetailsRecord attributeDetailsRecord, ITextEmbeddingGenerationService textEmbeddingGenerationService)
+    public static async Task<PositionDetails> Create(PositionDetailsRecord positionDetailsRecord, ITextEmbeddingGenerationService textEmbeddingGenerationService)
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
     {
-        return new AttributeDetails()
+        return new PositionDetails()
         {
-            Id = (ulong)attributeDetailsRecord.Id,
-            Title = attributeDetailsRecord.Title ?? "",
-            Category = attributeDetailsRecord.Category ?? "",
-            Weighting = attributeDetailsRecord.Weighting ?? "",
-            Description = attributeDetailsRecord.Description ?? "",
-            DescriptionEmbedding = await textEmbeddingGenerationService.GenerateEmbeddingAsync(attributeDetailsRecord.Description ?? "")
+            Id = (ulong)positionDetailsRecord.Id,
+            Title = positionDetailsRecord.Title ?? "",
+            Abbreviation = positionDetailsRecord.Abbreviation ?? "",
+            Description = positionDetailsRecord.Description ?? "",
+            DescriptionEmbedding = await textEmbeddingGenerationService.GenerateEmbeddingAsync(positionDetailsRecord.Description ?? "")
         };
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.VectorData;
-using FootySk.Database;
+using FootySk.Database.Player;
 using Microsoft.SemanticKernel.Embeddings;
 
 namespace FootySk.Core;

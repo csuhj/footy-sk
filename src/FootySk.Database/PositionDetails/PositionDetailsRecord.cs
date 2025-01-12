@@ -1,8 +1,8 @@
-namespace FootySk.Database;
+namespace FootySk.Database.PositionDetails;
 
 using System.Text.Json.Serialization;
 
-public class AttributeDetailsRecord
+public class PositionDetailsRecord
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
@@ -10,11 +10,8 @@ public class AttributeDetailsRecord
     [JsonPropertyName("title")]
     public string? Title { get; set; }
 
-    [JsonPropertyName("category")]
-    public string? Category { get; set; }
-
-    [JsonPropertyName("weighting")]
-    public string? Weighting { get; set; }
+    [JsonPropertyName("abbreviation")]
+    public string? Abbreviation { get; set; }
 
     [JsonPropertyName("description")]
     public string? Description { get; set; }

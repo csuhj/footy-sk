@@ -1,4 +1,4 @@
-﻿namespace FootySk.Database;
+﻿namespace FootySk.Database.Player;
 
 public class PlayerRecord
 {

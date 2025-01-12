@@ -1,4 +1,4 @@
-namespace FootySk.Database;
+namespace FootySk.Database.AttributeDetails;
 
 using System.Text.Json;
 

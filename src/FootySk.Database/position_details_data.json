@@ -1,0 +1,107 @@
+{
+    "dataSource": "https://fifauteam.com/fc-24-positions-guide/",
+    "data": [
+        {
+            "id": 0,
+            "title": "Goalkeeper",
+            "abbreviation": "GK",
+            "description": "The goalkeeper is the most defensive position in football. Their job is mainly defensive: guarding the team’s goal against being breached (not letting the other team score). Goalkeepers are the only players allowed to touch the ball with their hands and arms. However, they are restricted to doing so only within an 18-yard box; for this reason, they must wear jerseys that distinguish them from other outfield players and the referee."
+        },
+        {
+            "id": 1,
+            "title": "Right Back",
+            "abbreviation": "RB",
+            "description": "Right Backs are the defenders stationed to the right of the center-backs to protect from attacking wide players. They often have to defend against the opponent’s wingers, who will try to take the ball past them down the flanks to cross or pass into the penalty area to their attackers. They also take thrown-ins and provide support for the wide midfield ahead of them, eventually overlapping and sending crosses into the opposition box."
+        },
+        {
+            "id": 2,
+            "title": "Left Back",
+            "abbreviation": "LB",
+            "description": "Left Backs are the defenders stationed to the left of the center-backs to protect from attacking wide players. They often have to defend against the opponent’s wingers, who will try to take the ball past them down the flanks to cross or pass into the penalty area to their attackers. They also take thrown-ins and provide support for the wide midfield ahead of them, eventually overlapping and sending crosses into the opposition box."
+        },
+        {
+            "id": 3,
+            "title": "Right Wing-back",
+            "abbreviation": "RWB",
+            "description": "Right Wing-backs are modern variations of full-backs. They are defenders with a heavier emphasis on attack. They are expected to stay on their touchline, overlap, and send crosses into the opposition box but still mark opposition wingers when needed. It is one of the most physically demanding positions in modern football."
+        },
+        {
+            "id": 4,
+            "title": "Left Wing-back",
+            "abbreviation": "LWB",
+            "description": "Left Wing-Backs are modern variations of full-backs. They are defenders with a heavier emphasis on attack. They are expected to stay on their touchline, overlap, and send crosses into the opposition box but still mark opposition wingers when needed. It is one of the most physically demanding positions in modern football."
+        },
+        {
+            "id": 5,
+            "title": "Centre Back",
+            "abbreviation": "CB",
+            "description": "Center Backs play in a central position of the defense. Their job is to stop opposing players, particularly the strikers, from scoring and bring the ball out from their penalty area. CBs are often tall and strong and have good jumping, heading, and tackling abilities. Successful center-backs also need to concentrate, read the game well and be brave and decisive in making last-ditch tackles on attacking players who might otherwise be through on goal."
+        },
+        {
+            "id": 6,
+            "title": "Defensive Midfielder",
+            "abbreviation": "CDM",
+            "description": "Defensive Midfielders are stationed in front of the defenders to provide a more secure defense, thus “holding back” opponents’ freedom to attack. The CDM screens the defense by harrying and tackling the opposition teams’ attackers and defenders. They also help tactically, for instance, by directing central attacking players out to the wing where they have more limited influence and by covering the positions of full-backs, midfielders, and even the center-backs as they charge up into the attack."
+        },
+        {
+            "id": 7,
+            "title": "Central Midfielder",
+            "abbreviation": "CM",
+            "description": "Central Midfielders play several roles on the field of play, depending on their particular strengths and team tactics. They are the link between defense and attack and must also defend when the opposition is in possession. Their central position enables them to have an all-round view of the match, and as most of the action takes place in and around their area of the pitch, midfielders often exert the most significant degree of control over how a match is played."
+        },
+        {
+            "id": 8,
+            "title": "Attacking Midfielder",
+            "abbreviation": "CAM",
+            "description": "Attacking Midfielders are positioned in an advanced midfield position, usually between central midfield and the team’s forwards. Their main role is to create goal-scoring opportunities using superior vision and skill. The attacking midfielder is an important position requiring the player to possess superior technical abilities in passing and, perhaps more importantly, the ability to read the opposing defense to deliver defense-splitting passes to the strikers."
+        },
+        {
+            "id": 9,
+            "title": "Right Midfielder",
+            "abbreviation": "RM",
+            "description": "Right Midfielders are wide, effectively hugging the touchline. Like all attacking players, wide midfielders need to have ‘off-the-ball’ intelligence by being able to read passes from the midfield that give them a clear crossing or scoring opportunity. Usually, right-footed players are played on the right flank and left-footed players on the left as a matter of familiarity and comfort."
+        },
+        {
+            "id": 10,
+            "title": "Left Midfielder",
+            "abbreviation": "LM",
+            "description": "Left Midfielders are wide, effectively hugging the touchline. Like all attacking players, wide midfielders need to have ‘off-the-ball’ intelligence by being able to read passes from the midfield that give them a clear crossing or scoring opportunity. Usually, right-footed players are played on the right flank and left-footed players on the left as a matter of familiarity and comfort."
+        },
+        {
+            "id": 11,
+            "title": "Right Winger",
+            "abbreviation": "RW",
+            "description": "Right Wingers are in a wide position near the touchlines. A winger’s main attribute is usually speed, which is used to attack and dribble past the opponent’s full-backs to get behind the defense and then deliver crosses and passes into the center for their attackers. Occasionally they may swap sides of the field as a tactical move."
+        },
+        {
+            "id": 12,
+            "title": "Left Winger",
+            "abbreviation": "LW",
+            "description": "Left Wingers are in a wide position near the touchlines. A winger’s main attribute is usually speed, which is used to attack and dribble past the opponent’s full-backs to get behind the defense and then deliver crosses and passes into the center for their attackers. Occasionally they may swap sides of the field as a tactical move."
+        },
+        {
+            "id": 13,
+            "title": "Right Forward",
+            "abbreviation": "RF",
+            "description": "Right Forwards play along the wing. This position is similar to a winger, but a wide forward play on the front line emphasizes beating defenders more than crossing the ball. Wingers and wide forwards share many similarities, such as crossing, dribbling, and pace. These two positions were removed from FUT 23."
+        },
+        {
+            "id": 14,
+            "title": "Left Forward",
+            "abbreviation": "LF",
+            "description": "Left Forwards play along the wing. This position is similar to a winger, but a wide forward play on the front line emphasizes beating defenders more than crossing the ball. Wingers and wide forwards share many similarities, such as crossing, dribbling, and pace. These two positions were removed from FUT 23."
+        },
+        {
+            "id": 15,
+            "title": "Centre Forward",
+            "abbreviation": "CF",
+            "description": "Center-forwards are positioned between midfield and attack. They have two roles: first, they score goals through passes from teammates; second, they distract the defense from giving room for the attacking midfielder, winger, or withdrawn striker to attack. They usually need a good vision and technical and creative skills."
+        },
+        {
+            "id": 16,
+            "title": "Striker",
+            "abbreviation": "ST",
+            "description": "Strikers are positioned nearest to the opposing team’s goal. Their primary responsibility is scoring goals and creating scoring chances for other players. They can also hold the ball up until teammates join the attack and harry opposition defenders and goalkeepers while not in possession. A striker must be brilliant at receiving and controlling the ball, strong, and capable of winning the ball in the air."
+        }
+    ]
+}

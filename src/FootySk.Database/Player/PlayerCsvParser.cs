@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace FootySk.Database;
+namespace FootySk.Database.Player;
 
 public class PlayerCsvParser
 {
