@@ -23,6 +23,8 @@ public class PlayerCsvParser
                 return ParseHeightInCm;
             else if (f.Name == nameof(PlayerRecord.WeightInKg))
                 return ParseWeightInKg;
+            else if (f.Name == nameof(PlayerRecord.GenderRank))
+                return s => (int)ParseInt(s) + 1;
             else if (f.FieldType == typeof(int))
                 return ParseInt;
             else if (f.FieldType == typeof(string[]))
