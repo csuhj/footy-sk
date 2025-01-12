@@ -3,6 +3,7 @@ using FootySk.Database.Player;
 using FootySk.Database.AttributeDetails;
 using Microsoft.SemanticKernel.Embeddings;
 using FootySk.Database.PositionDetails;
+using FootySk.Database.PlaystyleDetails;
 
 namespace FootySk.Core;
 
@@ -89,6 +90,34 @@ public class VectorStoreHelper
         {
             // Create a record and generate a vector for the description using your chosen embedding generation implementation.
             await collection.UpsertAsync(await PositionDetails.Create(positionDetail, textEmbeddingService));
+        }
+    }
+
+#pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+    public static async Task PopulatePlaystyleDataVectorStore(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingService, string rootPath) {
+#pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+
+        // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
+        var collection = vectorStore.GetCollection<ulong, PlaystyleDetails>("playstyle_details");
+
+        if (await collection.CollectionExistsAsync()) {
+            Console.WriteLine("Playstyle Details collection already exists so not repopulating");
+            return;
+        }
+
+        // Create the collection if it doesn't exist yet.
+        await collection.CreateCollectionIfNotExistsAsync();
+
+        PlaystyleDetailsRecord[] playstyleDetails = PlaystyleDetailsDataParser.GetPlaystyleDetails(Path.Combine(rootPath, "src/FootySk.Database/playstyle_details_data.json"));
+        Console.WriteLine($"Populating playstyle details collection from database with {playstyleDetails.Length} items");
+
+        //See https://github.com/MicrosoftDocs/semantic-kernel-docs/blob/main/semantic-kernel/concepts/vector-store-connectors/vector-search.md
+        //    https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/vector-search?pivots=programming-language-csharp
+        //For now just update the first 10 players
+        foreach (var playstyleDetail in playstyleDetails)
+        {
+            // Create a record and generate a vector for the description using your chosen embedding generation implementation.
+            await collection.UpsertAsync(await PlaystyleDetails.Create(playstyleDetail, textEmbeddingService));
         }
     }
 }

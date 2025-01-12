@@ -44,6 +44,7 @@ var textEmbeddingService = kernel.GetRequiredService<ITextEmbeddingGenerationSer
 await VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath);
 await VectorStoreHelper.PopulateAttributeDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 await VectorStoreHelper.PopulatePositionDataVectorStore(vectorStore, textEmbeddingService, rootPath);
+await VectorStoreHelper.PopulatePlaystyleDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 
 // Add a plugin (the LightsPlugin class is defined below)
 // Add in vector text search - see https://github.com/microsoft/semantic-kernel/tree/main/dotnet/samples/Demos/VectorStoreRAG
