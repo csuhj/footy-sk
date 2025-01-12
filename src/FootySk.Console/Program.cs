@@ -41,7 +41,8 @@ Kernel kernel = builder.Build();
 var textEmbeddingService = kernel.GetRequiredService<ITextEmbeddingGenerationService>();
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
-VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath);
+await VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath);
+await VectorStoreHelper.PopulateAttributeDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 
 // Add a plugin (the LightsPlugin class is defined below)
 // Add in vector text search - see https://github.com/microsoft/semantic-kernel/tree/main/dotnet/samples/Demos/VectorStoreRAG

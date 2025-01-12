@@ -1,0 +1,236 @@
+{
+    "dataSource": "https://fifauteam.com/fc-24-attributes/",
+    "data": [
+        {
+            "id": 0,
+            "title": "Acceleration",
+            "category": "Physical",
+            "weighting": "45% Pace",
+            "description": "Acceleration is the increment of a player’s running speed. The higher the value, the shorter the time needed to reach maximum speed, no matter what that is.\nIt needs to be considered alongside the Sprint Speed stat. On a player with high acceleration but low sprint speed, his sprint evolves well, but his maximum speed is pretty low. In this case, acceleration becomes almost irrelevant – it’s no good getting to your top speed quickly if that top speed isn’t rapid.\nOn the other hand, a player who has high sprint speed but low acceleration can run fast, but it takes longer to reach his top speed."
+        },
+        {
+            "id": 1,
+            "title": "Aggression",
+            "category": "Mental",
+            "weighting": "20% Physical",
+            "description": "The aggression level of a player measures the frequency and the aggression of jostling, tackling and slide tackling. It is the attribute which determines the player’s power of will or commitment to a match.\nA typical aggression-based action is when you go ‘shoulder-to-shoulder’ against someone; with high aggression, our player has the initiative to push the opponent strongly (as far as his strength allows him to), which determines the winner of the challenge.\nAnother critical moment for aggression is when you jump to dispute a header. If you manage to hit the ball with your head, great; if you don’t, you’ll have to displace the other player so he can’t perform the header correctly. In this case, aggression needs to work alongside jumping and strength."
+        },
+        {
+            "id": 2,
+            "title": "Agility",
+            "category": "Physical",
+            "weighting": "10% Dribbling",
+            "description": "Agility measures how agile the player is while moving or turning. In other words, how fast and graceful a player can control the ball.\nPlayers with high agility can perform acrobatic shots or clearances. If you love players who like to run with the ball, agility is one of the stats to keep an eye on."
+        },
+        {
+            "id": 3,
+            "title": "Balance",
+            "category": "Physical",
+            "weighting": "5% Dribbling",
+            "description": "Balance attribute is the ability to maintain balance after a physical challenge.\nThis is another attribute that influences a player’s dribbling skill and, more generally, how responsive your controlling player feels. If he has high stats for agility and balance, he’ll move fluidly, and he’ll be able to get in or out of tight spots. Also, even if he has 95+ for acceleration and sprint speed, he could feel sluggish and a little unresponsive if they lack agility and balance."
+        },
+        {
+            "id": 4,
+            "title": "Composure",
+            "category": "Mental",
+            "weighting": "0% Dribbling",
+            "description": "This attribute determines at what distance the player with the ball starts feeling the pressure from the opponent. It affects the chances of the player making an error when he shoots, passes and crosses.\nThe higher the value, the better the player performs under pressure from an opponent."
+        },
+        {
+            "id": 5,
+            "title": "Crossing",
+            "category": "Technical",
+            "weighting": "20% Passing",
+            "description": "Crossing measures how accurately the player crosses the ball during normal running and free-kick set pieces.\nIt is the attribute for the players who play through the wings, but it also influences free kick set pieces and determines how easy it is for a player to get the ball in the box in the first place. If your winger keeps getting blocked when you expect him to whip the ball in, there’s a good chance he has a poor crossing score."
+        },
+        {
+            "id": 6,
+            "title": "Curve",
+            "category": "Technical",
+            "weighting": "5% Passing",
+            "description": "The curve stat measures the player’s ability to curve the ball when passing and shooting. The higher the value, the more curve/curl the player can put on the ball.\nIt’s an excellent attribute for any set-piece takers; curling corners can be a nightmare to defend against, and curling free-kicks can be tough to save."
+        },
+        {
+            "id": 7,
+            "title": "Defensive Awareness",
+            "category": "Technical",
+            "weighting": "30% Defending",
+            "description": "Previously known as marking, defensive awareness is the ability to track and defend an opposing player. In other words, your player can stay close to an opposing attacker and stop him from getting to a cross/pass from a teammate. It also contributes to tracking runs.\nAI players will do this off the ball, and when you’re in control of a defender, their Defensive Awareness stat will affect how good they are at containing."
+        },
+        {
+            "id": 8,
+            "title": "Diving",
+            "category": "Goalkeeping",
+            "weighting": "100% Diving",
+            "description": "Diving is the GK’s ability to make a save whilst diving through the air. It is directly affected by the player’s height. The taller the player is, the better is his diving."
+        },
+        {
+            "id": 9,
+            "title": "Dribbling",
+            "category": "Technical",
+            "weighting": "50% Defending",
+            "description": "Dribbling is the player’s ability to carry the ball and pass an opponent. A higher value means the player will be able to keep better possession of the ball whilst dribbling because he will keep the ball closer, making it harder for the opponent to win it off of him.\nDribbling has no connection with the ball receiving factor; that only has to do with ball control, but as soon as you have the ball ahead of you, that’s when dribbling counts, allowing you to get past the opponent using dribbles."
+        },
+        {
+            "id": 10,
+            "title": "Finishing",
+            "category": "Technical",
+            "weighting": "45% Finishing",
+            "description": "Finishing is the accuracy of shots using foot inside the penalty area.\nNot everyone knows, but finishing does not influence headers or finishes outside the area. Being a great finisher doesn’t necessarily mean being able to beat the goalkeeper but shooting on target more easily.\nAn analogy would be thinking that having high finishing will affect the ball’s magnetism, so when the ball would have normally hit the post for a bad finisher, a great finisher would have this force push it towards the goal or when it would’ve usually gone wide the ball would at least hit the post."
+        },
+        {
+            "id": 11,
+            "title": "Free Kick Accuracy",
+            "category": "Technical",
+            "weighting": "5% Passing",
+            "description": "Free Kick is a Football Club attribute that measures the player’s accuracy for taking Free Kicks. The higher the value, the better the accuracy of a direct free kick on goal.\nYou should pick a free-kick taker with excellent free-kick accuracy and curve score."
+        },
+        {
+            "id": 12,
+            "title": "Handling",
+            "category": "Goalkeeping",
+            "weighting": "100% Handling",
+            "description": "Handling is an exclusive goalkeeper attribute used to measure how cleanly he catches the ball and does he hold on to it.\nIn other words, it is the frequency that the keeper catches the ball rather than parrying it and whether or not he holds onto it."
+        },
+        {
+            "id": 13,
+            "title": "Interceptions",
+            "category": "Mental",
+            "weighting": "20% Defending",
+            "description": "Interception determines the ability to read the game and intercept passes.\nThis attribute applies more to AI-controlled teammates rather than the player you’ve selected. If you’ve seen players stick out legs or do something unexpected to prevent a pass, they’ll likely have a high Interceptions score."
+        },
+        {
+            "id": 14,
+            "title": "Jumping",
+            "category": "Physical",
+            "weighting": "5% Physical",
+            "description": "Jumping is the player’s ability and quality for jumping from the surface for headers. The higher the value is, the higher the player can jump.\nLike many others, this one is relatively useless without its related attributes. For example, for a player to be outstanding in the air, he needs to have high jumping, strength aggression and heading accuracy stats. His height may also help a lot. A tall player does not need to have a high jumping attribute to connect to the ball."
+        },
+        {
+            "id": 15,
+            "title": "Kicking",
+            "category": "Goalkeeping",
+            "weighting": "100% Kicking",
+            "description": "Kicking is another attribute exclusively for goalkeepers, used to measure the length and accuracy of goal kicks from out of the hands or on the ground.\nThe length and accuracy of throws are partially determined by the kicking attribute but mainly by the long throw trait."
+        },
+        {
+            "id": 16,
+            "title": "Long Passing",
+            "category": "Technical",
+            "weighting": "15% Passing",
+            "description": "The passing attribute is used to classify how well a player performs a long pass in the air to his teammate. It doesn’t affect long ground passes.\nThis stat also determines how quickly the ball gets to him – the higher the score, the faster and more accurate the pass will be."
+        },
+        {
+            "id": 17,
+            "title": "Long Shots",
+            "category": "Technical",
+            "weighting": "20% Finishing",
+            "description": "The Long Shots attribute measures the accuracy of shots from outside the penalty area.\nThis stat is an excellent attribute for midfielders to have."
+        },
+        {
+            "id": 18,
+            "title": "Penalties",
+            "category": "Technical",
+            "weighting": "5% Finishing",
+            "description": "The Penalties attribute measures the accuracy of shots from inside the penalty area.\nContrary to what most players think, it is crucial not only on penalties but also for any other play inside the box."
+        },
+        {
+            "id": 19,
+            "title": "Positioning",
+            "category": "Mental",
+            "weighting": "5% Finishing",
+            "description": "Positioning is the player’s ability to take up good positions on the field during a game. The higher this stat, the more likely a player will make enough space to receive the ball in dangerous areas.\nThis attribute deals with a player’s ability to spot open space and move into good positions that offer an attacking advantage. However, it doesn’t affect where the player will be when taking a free kick or a corner."
+        },
+        {
+            "id": 20,
+            "title": "Positioning",
+            "category": "Goalkeeping",
+            "weighting": "100% Positioning",
+            "description": "Positioning for goalkeepers is slightly different from positioning for other players. This attribute is the GK’s ability to position himself correctly when saving shots.\nIt also affects the way how a goalkeeper reacts to crosses."
+        },
+        {
+            "id": 21,
+            "title": "Reactions",
+            "category": "Physical",
+            "weighting": "0% Dribbling",
+            "description": "Reactions measures how quickly a player responds to a situation happening around him.\nIt has nothing to do with the player’s speed. A player can be speedy but at the same time have low reaction capacity. It’s the time between the moment he sees where the ball is at and the moment he gets in position to receive it.\nThis attribute impacts all players, whether the computer controls them."
+        },
+        {
+            "id": 22,
+            "title": "Reflexes",
+            "category": "Goalkeeping",
+            "weighting": "100% Reflexes",
+            "description": "Reflexes stat is the agility of the goalkeeper when making a save.\nIn other words, it determines how quickly the goalkeeper reacts to a shot on goal. If the stat is low, he will make a move later or could miss it entirely."
+        },
+        {
+            "id": 23,
+            "title": "Short Passing",
+            "category": "Technical",
+            "weighting": "35% Passing",
+            "description": "Short Passing ranks how well a player performs a short / ground pass to his teammate.\nIn other words, it determines a player’s accuracy and speed of passing over a short distance."
+        },
+        {
+            "id": 24,
+            "title": "Shot Power",
+            "category": "Technical",
+            "weighting": "20% Finishing",
+            "description": "Shot Power evaluates how hard the player hits the ball when taking a shot at the goal. It is the amount of power a player can put into a shot while keeping it accurate.\nIt affects how fast the ball travels when struck from any distance. A player with a low shot power can still hit the ball hard into the back of the net, but the longer you hold B/O, the more likely he is to miss."
+        },
+        {
+            "id": 25,
+            "title": "Sliding Tackle",
+            "category": "Technical",
+            "weighting": "10% Defending",
+            "description": "This stat measures the player’s ability to time sliding tackles so that they win the ball rather than give away a foul.\nHaving high Tackles, both Standing and Sliding Tackles counts for a good centre-back. These movements are risky, they might cause free kicks, booking or whatever, but they’ll shut the attacker most times, and if used carefully, the results are excellent. Remember that the definition of Tackle is: a player’s ability to win the ball without causing a free kick by using his body strength, being the contact shoulder-to-shoulder or by foot.\nIn-game, this also translates into being able to taunt the opponent with shirt pulling, grabbing and other not-so-fair moves without being caught by the referee if your player’s Tackles attributes are high."
+        },
+        {
+            "id": 26,
+            "title": "Speed",
+            "category": "Goalkeeping",
+            "weighting": "100% Speed",
+            "description": "This is another stat only goalkeepers have. It is the ability to close down an opponent in one-on-one situations.\nThis attribute is especially important if you use the off-side trap to stop your opponents."
+        },
+        {
+            "id": 27,
+            "title": "Sprint Speed",
+            "category": "Physical",
+            "weighting": "55% Pace",
+            "description": "Sprint speed measures how fast the player runs while at top speed.\nHere is a good example of what this attribute is. A race between a man, a car and a plane, who wins? It depends. If it’s a 30 meters long race the man wins, and it would take him only 4 seconds to finish. However, if the race had been longer, around 150-200 meters, the car would win, and then the plane would be the winner at anything beyond that. That happens because the man’s acceleration is greater than both the car’s and the plane’s, but when it comes to maximum speed capacity he naturally loses."
+        },
+        {
+            "id": 28,
+            "title": "Stamina",
+            "category": "Physical",
+            "weighting": "25% Physical",
+            "description": "Stamina determines the rate at which a player will tire during a game. It evaluates how tired your player gets as the match approaches half time or full time.\nDon’t think that your player is tired only when he stops to catch his breast. When he gets to this point it actually means he’s stopped playing, his performance starts being affected way before this happens.\nStamina is also responsible for your player getting injured more easily in any challenge, not necessarily in the last minutes of the match. This attribute also determines how quickly a player recovers between matches and the amount of time a player can sprint before slowing down."
+        },
+        {
+            "id": 29,
+            "title": "Standing Tackle",
+            "category": "Technical",
+            "weighting": "30% Defending",
+            "description": "This attribute measures the ability of the player to time standing tackles so that they win the ball rather than give away a foul. If the stat is low, he is more likely to miss time the challenge or kick the ball away.\nWhat really counts for a good centre back is having high Tackles, both Standing and Sliding Tackles. These movements are risky, they might cause free kicks, booking or whatever, but they’ll shut the attacker most times, and if used carefully the results are excellent.\nRemember that the definition of Tackle is: a player’s ability to win the ball without causing a free kick by using his body strength, being the contact shoulder-to-shoulder or by foot. In game this also translates into being able to taunt the opponent with shirt pulling, grabbing and other not-so-fair moves without being caught by the referee if your player’s Tackles attributes are high."
+        },
+        {
+            "id": 30,
+            "title": "Strength",
+            "category": "Physical",
+            "weighting": "50% Physical",
+            "description": "Strength is about the quality or state of being physically strong. The higher the value, the more likely the player will win a physical challenge.\nYour player’s strength stat will decide how they cope with any physical battles, so a good score in this area is vital for anyone with defensive responsibilities. It’s also a desirable attribute for at least one of your strikers to give you a chance in 50-50s with defenders."
+        },
+        {
+            "id": 31,
+            "title": "Vision",
+            "category": "Mental",
+            "weighting": "20% Passing",
+            "description": "Vision ranks the player’s awareness of the position of his teammates and opponents around him. It is the attribute that increases (or reduces) the possibilities of a successful long pass.\nWhen we’re playing looking at the screen, we usually have an overhead view of the game, just like watching football on TV. However, a player has a different, first-person pitch view, and it’s tough to see where his teammates are.\nWithout seeing where they are, a long pass will have a random destination; it might be a teammate or an opponent that receives the ball. The better the Vision attribute, the wider your player will see to locate his teammates and, therefore, the more significant the chances of a successful long pass. It doesn’t matter how high a player’s long passing stat is if he doesn’t have a decent vision."
+        },
+        {
+            "id": 32,
+            "title": "Volleys",
+            "category": "Technical",
+            "weighting": "5% Finishing",
+            "description": "The Volleys attribute measures the accuracy and power of volleys at goal. It affects the technique and accuracy of shots taken while the ball is in the air.\nThis attribute tends to be coupled with the balance trait if the player is not fully facing the goal. Volleys stat is responsible for some of the most beautiful goals."
+        }
+    ]
+}
