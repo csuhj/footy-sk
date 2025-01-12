@@ -10,10 +10,10 @@ using System.Text.Json;
 using Microsoft.Data.Sqlite;
 using Microsoft.SemanticKernel.Embeddings;
 
-PlayerRecord[] players = await new PlayerCsvParser("../../../../../src/FootySk.Database/all_players.csv").Parse();
-Console.WriteLine($"Using database with {players.Length} players");
+string executablePath = Path.GetDirectoryName(System.Environment.ProcessPath);
+string rootPath = Path.GetFullPath("../../../../..", executablePath);
 
-var connection = new SqliteConnection("Data Source=:memory:");
+var connection = new SqliteConnection($"Data Source={Path.Combine(rootPath, "FootySkVectorStore.db")}");
 connection.Open();
 
 //Using Sqlite implementation of Vector Store connector
@@ -24,37 +24,28 @@ connection.LoadExtension("vec0");
 // Create a Sqlite VectorStore object
 var vectorStore = new SqliteVectorStore(connection);
 
-// Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
-var collection = vectorStore.GetCollection<ulong, Player>("players");
-
-// Create the collection if it doesn't exist yet.
-await collection.CreateCollectionIfNotExistsAsync();
-
-// Create a kernel with Azure OpenAI chat completion
+string credentialsPath = Path.Combine(rootPath, "credentials.json");
+// Create a kernel with Azure OpenAI chat completion andf text embeddings generation
 var builder = Kernel
     .CreateBuilder()
-    .AddAzureOpenAIChatCompletionWithCredentials("../../../../../credentials.json")
-    .AddAzureOpenAITextEmbeddingGeneration("../../../../../credentials.json");
+    .AddAzureOpenAIChatCompletionWithCredentials(credentialsPath)
+    .AddAzureOpenAITextEmbeddingGeneration(credentialsPath);
 
 // Add enterprise components
 builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace));
 
 // Build the kernel
 Kernel kernel = builder.Build();
-var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
 #pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 var textEmbeddingService = kernel.GetRequiredService<ITextEmbeddingGenerationService>();
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
-//For now just update the first 10 players
-foreach (var player in players.Take(10))
-{
-    // Create a record and generate a vector for the description using your chosen embedding generation implementation.
-    await collection.UpsertAsync(await Player.Create(player, textEmbeddingService));
-}
+VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath);
 
 // Add a plugin (the LightsPlugin class is defined below)
+// Add in vector text search - see https://github.com/microsoft/semantic-kernel/tree/main/dotnet/samples/Demos/VectorStoreRAG
+// Create new plugin to register players in a team?
 kernel.Plugins.AddFromType<LightsPlugin>("Lights");
 
 // Enable planning
@@ -65,6 +56,8 @@ OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
 
 // Create a history store the conversation
 var history = new ChatHistory();
+
+var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
 // Initiate a back-and-forth chat
 string? userInput;
