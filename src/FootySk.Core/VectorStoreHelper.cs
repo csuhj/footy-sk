@@ -25,12 +25,15 @@ public class VectorStoreHelper
         await collection.CreateCollectionIfNotExistsAsync();
 
         PlayerRecord[] players = await new PlayerCsvParser(Path.Combine(rootPath, "src/FootySk.Database/all_players.csv")).Parse();
-        Console.WriteLine($"Populating players collection from database with {players.Length} players");
+        Console.WriteLine($"Got a total of {players.Length} players");
+
+        Func<PlayerRecord, bool> playerFilter = p => p.League == "Premier League";
+        Console.WriteLine($"Populating players collection from database with {players.Count(playerFilter)} players");
 
         //See https://github.com/MicrosoftDocs/semantic-kernel-docs/blob/main/semantic-kernel/concepts/vector-store-connectors/vector-search.md
         //    https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/vector-search?pivots=programming-language-csharp
         //For now just update the first 10 players
-        foreach (var player in players.Take(10))
+        foreach (var player in players.Where(playerFilter))
         {
             // Create a record and generate a vector for the description using your chosen embedding generation implementation.
             await collection.UpsertAsync(await Player.Create(player, textEmbeddingService, positionAbbreviationToNameMap));
