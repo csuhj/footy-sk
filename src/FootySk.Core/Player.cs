@@ -34,13 +34,13 @@ public class Player
 
     private static string CreateDescription(PlayerRecord playerRecord)
     {
-        string gender = playerRecord.Rank == playerRecord.GenderRank ? "Male" : "Female";
+        string gender = playerRecord.Gender == "M" ? "Male" : "Female";
         return 
-            $"This {gender} footballer called {playerRecord.Name} is ranked {playerRecord.Rank} in the world.\n"+
+            $"The {gender} footballer called {playerRecord.Name} is ranked {playerRecord.Rank} in the world.\n"+
             $"They have an overall score of {playerRecord.OVR}, with pace of {playerRecord.PAC}, shooting of {playerRecord.SHO}, passing of {playerRecord.PAS}, dribbling of {playerRecord.DRI}, defending of {playerRecord.DEF} and physicality of {playerRecord.PHY}.\n"+
-            $"Their playing position is {playerRecord.Position} and their preferred foot is {playerRecord.PreferredFoot}.\n"+
+            $"Their playing position is {playerRecord.Position} and they prefer to play with their {playerRecord.PreferredFoot} foot.\n"+
             $"They are {playerRecord.Age} years old, {playerRecord.HeightInCm}cm tall and they weigh {playerRecord.WeightInKg}kg.\n"+
-            $"They are from {playerRecord.Nation}, and play in the league {playerRecord.League} for {playerRecord.Team}.\n"+
+            $"They are from {playerRecord.Nation}, and play in the league called {playerRecord.League} for {playerRecord.Team}.\n"+
             $"Their styles of play are {string.Join(", ", playerRecord.PlayStyle)}.";
     }
 }

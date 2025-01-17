@@ -2,6 +2,7 @@
 
 public class PlayerRecord
 {
+    public string Gender;
     public int Id;
     public int GenderRank;
     public int Rank;
