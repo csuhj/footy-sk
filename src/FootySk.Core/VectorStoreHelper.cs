@@ -10,7 +10,7 @@ namespace FootySk.Core;
 public class VectorStoreHelper
 {
 #pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-    public static async Task PopulatePlayersVectorStore(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingService, string rootPath) {
+    public static async Task PopulatePlayersVectorStore(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingService, string rootPath, Dictionary<string, string> positionAbbreviationToNameMap) {
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
         // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
@@ -33,7 +33,7 @@ public class VectorStoreHelper
         foreach (var player in players.Take(10))
         {
             // Create a record and generate a vector for the description using your chosen embedding generation implementation.
-            await collection.UpsertAsync(await Player.Create(player, textEmbeddingService));
+            await collection.UpsertAsync(await Player.Create(player, textEmbeddingService, positionAbbreviationToNameMap));
         }
     }
 

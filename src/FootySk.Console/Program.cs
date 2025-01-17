@@ -5,8 +5,6 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.Connectors.Sqlite;
 using FootySk.Core;
-using FootySk.Database;
-using System.Text.Json;
 using Microsoft.Data.Sqlite;
 using Microsoft.SemanticKernel.Embeddings;
 
@@ -44,7 +42,9 @@ var textEmbeddingService = kernel.GetRequiredService<ITextEmbeddingGenerationSer
 await VectorStoreHelper.PopulateAttributeDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 await VectorStoreHelper.PopulatePositionDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 await VectorStoreHelper.PopulatePlaystyleDataVectorStore(vectorStore, textEmbeddingService, rootPath);
-await VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath);
+
+Dictionary<string, string> positionAbbreviationToNameMap = await DatabaseHelper.GetPositionAbbreviationToNameMap(connection);
+await VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath, positionAbbreviationToNameMap);
 
 // Add a plugin (the LightsPlugin class is defined below)
 // Add in vector text search - see https://github.com/microsoft/semantic-kernel/tree/main/dotnet/samples/Demos/VectorStoreRAG
