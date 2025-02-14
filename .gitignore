@@ -1,5 +1,5 @@
 credentials.json
-FootySkVectorStore.db
+FootySkVectorStore*.db
 **/bin/*
 **/obj/*
 **/.DS_Store

@@ -1,11 +1,40 @@
 ﻿using Microsoft.Extensions.VectorData;
 using FootySk.Database.Player;
 using Microsoft.SemanticKernel.Embeddings;
+using Microsoft.SemanticKernel.Data;
 
 namespace FootySk.Core;
 
 public class Player
 {
+    #pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+    public class PlayerTextSearchStringMapper : ITextSearchStringMapper
+    {
+        /// <inheritdoc />
+        public string MapFromResultToString(object result)
+        {
+            if (result is Player player)
+            {
+                return player.Description;
+            }
+            throw new ArgumentException("Invalid result type.");
+        }
+    }
+
+    public class PlayerTextSearchResultMapper : ITextSearchResultMapper
+    {
+        /// <inheritdoc />
+        public TextSearchResult MapFromResultToTextSearchResult(object result)
+        {
+            if (result is Player player)
+            {
+                return new TextSearchResult(value: player.Description) { Name = player.Name, Link = null };
+            }
+            throw new ArgumentException("Invalid result type.");
+        }
+    }
+    #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+
     [VectorStoreRecordKey]
     public ulong Id {get; set;}
 
@@ -44,4 +73,6 @@ public class Player
             $"They are from {playerRecord.Nation}, and play in the league called {playerRecord.League} for {playerRecord.Team}.\n"+
             $"Their styles of play are {string.Join(", ", playerRecord.PlayStyle)}.";
     }
+
+
 }

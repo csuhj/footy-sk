@@ -9,12 +9,28 @@ namespace FootySk.Core;
 
 public class VectorStoreHelper
 {
+    public static IVectorStoreRecordCollection<ulong, Player> GetPlayersCollection(IVectorStore vectorStore) {
+        return vectorStore.GetCollection<ulong, Player>("players");
+    }
+
+    public static IVectorStoreRecordCollection<ulong, AttributeDetails> GetAttributeDetailsCollection(IVectorStore vectorStore) {
+        return vectorStore.GetCollection<ulong, AttributeDetails>("attribute_details");
+    }
+
+    public static IVectorStoreRecordCollection<ulong, PositionDetails> GetPositionDetailsCollection(IVectorStore vectorStore) {
+        return vectorStore.GetCollection<ulong, PositionDetails>("position_details");
+    }
+
+    public static IVectorStoreRecordCollection<ulong, PlaystyleDetails> GetPlaystyleDetailsCollection(IVectorStore vectorStore) {
+        return vectorStore.GetCollection<ulong, PlaystyleDetails>("playstyle_details");
+    }
+
 #pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
     public static async Task PopulatePlayersVectorStore(IVectorStore vectorStore, ITextEmbeddingGenerationService textEmbeddingService, string rootPath, Dictionary<string, string> positionAbbreviationToNameMap) {
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
         // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
-        var collection = vectorStore.GetCollection<ulong, Player>("players");
+        var collection = GetPlayersCollection(vectorStore);
 
         if (await collection.CollectionExistsAsync()) {
             Console.WriteLine("Players collection already exists so not repopulating");
@@ -45,7 +61,7 @@ public class VectorStoreHelper
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
         // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
-        var collection = vectorStore.GetCollection<ulong, AttributeDetails>("attribute_details");
+        var collection = GetAttributeDetailsCollection(vectorStore);
 
         if (await collection.CollectionExistsAsync()) {
             Console.WriteLine("Attribute Details collection already exists so not repopulating");
@@ -73,7 +89,7 @@ public class VectorStoreHelper
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
         // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
-        var collection = vectorStore.GetCollection<ulong, PositionDetails>("position_details");
+        var collection = GetPositionDetailsCollection(vectorStore);
 
         if (await collection.CollectionExistsAsync()) {
             Console.WriteLine("Position Details collection already exists so not repopulating");
@@ -101,7 +117,7 @@ public class VectorStoreHelper
 #pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
         // Choose a collection from the database and specify the type of key and record stored in it via Generic parameters.
-        var collection = vectorStore.GetCollection<ulong, PlaystyleDetails>("playstyle_details");
+        var collection = GetPlaystyleDetailsCollection(vectorStore);
 
         if (await collection.CollectionExistsAsync()) {
             Console.WriteLine("Playstyle Details collection already exists so not repopulating");

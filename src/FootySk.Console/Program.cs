@@ -3,53 +3,35 @@ using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
-using Microsoft.SemanticKernel.Connectors.Sqlite;
 using FootySk.Core;
-using Microsoft.Data.Sqlite;
-using Microsoft.SemanticKernel.Embeddings;
-
-string executablePath = Path.GetDirectoryName(System.Environment.ProcessPath);
+string executablePath = Path.GetDirectoryName(Environment.ProcessPath);
 string rootPath = Path.GetFullPath("../../../../..", executablePath);
 
-var connection = new SqliteConnection($"Data Source={Path.Combine(rootPath, "FootySkVectorStore.db")}");
-connection.Open();
-
-//Using Sqlite implementation of Vector Store connector
-//https://learn.microsoft.com/en-us/semantic-kernel/concepts/vector-store-connectors/?pivots=programming-language-csharp
-//Need to get vec0 extension from https://github.com/asg017/sqlite-vec/releases - see README.md
-connection.LoadExtension("vec0");
-
-// Create a Sqlite VectorStore object
-var vectorStore = new SqliteVectorStore(connection);
-
 string credentialsPath = Path.Combine(rootPath, "credentials.json");
-// Create a kernel with Azure OpenAI chat completion andf text embeddings generation
+string vectorStoreConnectionString = $"Data Source={Path.Combine(rootPath, "FootySkVectorStore.db")}";
+
+// Create a kernel with Azure OpenAI chat completion, text embeddings generation and SQLite vector store
 var builder = Kernel
     .CreateBuilder()
     .AddAzureOpenAIChatCompletionWithCredentials(credentialsPath)
-    .AddAzureOpenAITextEmbeddingGeneration(credentialsPath);
+    .AddAzureOpenAITextEmbeddingGeneration(credentialsPath, out var textEmbeddingService)
+    .AddSqliteVectorStore(vectorStoreConnectionString, out var sqliteConnection, out var vectorStore);
 
 // Add enterprise components
 builder.Services.AddLogging(services => services.AddConsole().SetMinimumLevel(LogLevel.Trace));
-
-// Build the kernel
-Kernel kernel = builder.Build();
-
-#pragma warning disable SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-var textEmbeddingService = kernel.GetRequiredService<ITextEmbeddingGenerationService>();
-#pragma warning restore SKEXP0001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
 await VectorStoreHelper.PopulateAttributeDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 await VectorStoreHelper.PopulatePositionDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 await VectorStoreHelper.PopulatePlaystyleDataVectorStore(vectorStore, textEmbeddingService, rootPath);
 
-Dictionary<string, string> positionAbbreviationToNameMap = await DatabaseHelper.GetPositionAbbreviationToNameMap(connection);
+Dictionary<string, string> positionAbbreviationToNameMap = await DatabaseHelper.GetPositionAbbreviationToNameMap(sqliteConnection);
 await VectorStoreHelper.PopulatePlayersVectorStore(vectorStore, textEmbeddingService, rootPath, positionAbbreviationToNameMap);
 
-// Add a plugin (the LightsPlugin class is defined below)
-// Add in vector text search - see https://github.com/microsoft/semantic-kernel/tree/main/dotnet/samples/Demos/VectorStoreRAG
-// Create new plugin to register players in a team?
-kernel.Plugins.AddFromType<LightsPlugin>("Lights");
+builder.AddPlayerVectorStoreTextSearch(vectorStore, textEmbeddingService, out var playerTextSearch);
+
+// Build the kernel
+Kernel kernel = builder.Build();
+kernel.Plugins.AddFromObject(new PlayerSearchPlugin(playerTextSearch), "PlayerSearch");
 
 // Enable planning
 OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new() 
