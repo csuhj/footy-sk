@@ -32,6 +32,7 @@ builder.AddPlayerVectorStoreTextSearch(vectorStore, textEmbeddingService, out va
 // Build the kernel
 Kernel kernel = builder.Build();
 kernel.Plugins.AddFromObject(new PlayerSearchPlugin(playerTextSearch), "PlayerSearch");
+kernel.Plugins.AddFromType<TeamBuilderPlugin>("TeamBuilder");
 
 // Enable planning
 OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new() 
