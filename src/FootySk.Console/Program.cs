@@ -4,6 +4,7 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using FootySk.Core;
+
 string executablePath = Path.GetDirectoryName(Environment.ProcessPath);
 string rootPath = Path.GetFullPath("../../../../..", executablePath);
 
@@ -44,6 +45,15 @@ OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
 var history = new ChatHistory();
 
 var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
+
+string systemMessage = 
+@"You are a helpful assistant that is used to get information about male and female football players and to build a team.
+Your name is Angus.
+When you are asked about players you should take your knowledge of football from the PlayerSearch plugin.
+When you are asked to add players to a team or asked who is in the team you should use the TeamBuilder plugin.
+In this context football means soccer, although you should refer to it as football.";
+
+history.AddSystemMessage(systemMessage);
 
 // Initiate a back-and-forth chat
 string? userInput;
